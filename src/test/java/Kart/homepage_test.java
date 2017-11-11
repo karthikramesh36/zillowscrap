@@ -1,10 +1,16 @@
 package Kart;
 
 import org.testng.annotations.Test;
+
+import business.logging_in;
+
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Keys;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -14,42 +20,32 @@ import objectRepo.HomePage;
 import objectRepo.LoginPage;
 
 public class homepage_test extends initialize {
-		
-	@BeforeTest
+	
+	logging_in l = new logging_in(driver);
+	
+	@BeforeClass
 	public void initialize() throws IOException{
 		driver=initializeDriver();
+	}
+		
+	@ Test
+	public void homepagenavigation() throws IOException, InterruptedException {
 		driver.get(prop.getProperty("url"));
-	}
-		
-	@ Test(dataProvider = "getData")
-	public void homepagenavigation(String email,String password) throws IOException {
-		HomePage hp = new HomePage(driver);
-		LoginPage lp = new LoginPage(driver);
-		
-		//hp.getLogin().click();
-		//lp.getEmail().sendKeys(email);
-		//lp.getPassword().sendKeys(password);
-	//	lp.getLogin().click();
-		hp.getSearchBar().click();
-		hp.getSearchBar().sendKeys("longbeach, CA"); 
-		hp.getSearchBar().sendKeys(Keys.RETURN);
-	}
-	
+		driver=l.homep_to_loginp(driver);
+		driver=l.user_login(driver);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-	@DataProvider
-	public Object[][] getData() {
-		//array size 2 , index -> 0,1
-		Object[][] data = new Object[2][2];
-		//row number indicates test data number and column number indicates type of data per test
-		data[0][0] ="trojanster@aol.com";
-		data[0][1] ="123456789a";
+		System.out.println(driver.getCurrentUrl());
+		//driver.getCurrentUrl();
 		
 
-		return data;
 		
+		
+		
+
 	}
-	
-	@AfterTest
+		
+	@AfterClass
 	public void teardown(){
 		driver.close();
 	}

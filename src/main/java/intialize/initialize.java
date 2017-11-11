@@ -11,7 +11,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class initialize {
-	public WebDriver driver;
+	public static WebDriver driver;
 	public Properties prop;
 
 	
@@ -21,13 +21,14 @@ public class initialize {
 	prop.load(fis);
 	String browserName=prop.getProperty("browser");
 	System.out.println(browserName);
-	
-	if (browserName.equals("firefox")) {
+	// 1 implies firefox
+	// 2 implies chrome
+	if (browserName.equals("1")) {
 		System.setProperty("webdriver.gecko.driver", "/Users/karthik/Downloads/geckodriver");
 		driver = new FirefoxDriver();
 		
 	}
-	else if (browserName.equals("chrome")){
+	else if (browserName.equals("2")){
 		System.setProperty("webdriver.chrome.driver", "/Users/karthik/Downloads/chromedriver");
 		driver = new ChromeDriver();
 	}

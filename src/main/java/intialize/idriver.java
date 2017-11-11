@@ -41,4 +41,10 @@ public class idriver {
 	    JavascriptExecutor jse = (JavascriptExecutor)driver;
 	    jse.executeScript("window.scrollBy(0,250)", "");
 	}
+	public WebDriver jscriptexeclick(WebDriver driver,WebElement ele){
+		JavascriptExecutor executor = (JavascriptExecutor)driver;
+	    executor.executeScript("arguments[0].click();", ele);
+	    return driver;
+	    
+	}
 }

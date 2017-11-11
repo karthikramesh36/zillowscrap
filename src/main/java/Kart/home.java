@@ -17,14 +17,14 @@ public WebDriver driver;
 		
 		HomePage hp = new HomePage(driver);
 		LoginPage lp = new LoginPage(driver);
-		hp.getTitle().isDisplayed();
-		hp.getLogin().click();
+	//	hp.getTitle().isDisplayed();
+		//hp.getLogin().click();
 		lp.getEmail().sendKeys("trojanster@aol.com");
 		lp.getPassword().sendKeys("123456789a");
 		lp.getLogin().click();
-		hp.getSearchBar().click();
-		hp.getSearchBar().sendKeys("longbeach, CA");
-		hp.getSearchBar().sendKeys(Keys.RETURN);
+		//hp.getSearchBar().click();
+		//hp.getSearchBar().sendKeys("longbeach, CA");
+		//hp.getSearchBar().sendKeys(Keys.RETURN);
 		return driver;
 		
 	}

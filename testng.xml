@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Suite">
-  <test name="Test">
+
+  <test name="validTest">
     <classes>
-      <class name="Kart.AppTest"/>
-      <class name="Kart.validateTitle"/>
+      <class name="Kart.validateTitle"/> 
+    </classes>
+  </test>
+    <test name="scrapTest">
+    <classes>
+      <class name="Kart.scraptest"/> 
+    </classes>
+  </test>
+  <test name="initTest">
+    <classes>
       <class name="Kart.init_test"/>
+    </classes>
+  </test>
+  <test name="homeTest">
+    <classes>
       <class name="Kart.homepage_test"/>
     </classes>
   </test> <!-- Test -->

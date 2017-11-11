@@ -11,9 +11,9 @@ public class HomePage {
 	public WebDriver driver;
 	idriver idriver = new idriver(driver);
 	
-	
-	By signIn = By.id("login_opener");
-	By searchBar = By.id("citystatezip");
+	By myaccount = By.id("js-toggleRightNavLg");
+	By signIn = By.id("rightNav-signIn");
+	By searchBar = By.id("searchLabel");
 	By title = By.className("zsg-logo-svg");
 	
 	public HomePage(WebDriver driver) {
@@ -22,13 +22,18 @@ public class HomePage {
 	}
 
 	
-	public WebElement getLogin(){
-		return idriver.findelement(driver, signIn, 30);
+	public WebElement get_myaccount(){
+		idriver.waitForLoad(driver);
+
+		return idriver.findelement(driver, myaccount, 30);
+		
+		
 	}
-	public WebElement getTitle(){
-		return idriver.findelement(driver, title, 10);
+	public WebElement get_signin(){
+		idriver.waitForLoad(driver);
+		return idriver.findelement(driver, signIn, 10);
 	}	
-	public WebElement getSearchBar(){
+	public WebElement get_searchBar(){
 		return idriver.findelement(driver, searchBar, 30);
 		
 	}	
